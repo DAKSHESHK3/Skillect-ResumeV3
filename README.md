@@ -62,11 +62,6 @@ skillect-v3/
 
 ```bash
 
-```bash
-# ===============================
-# V3 INSTALLATION STEPS
-# ===============================
-
 # 1. Clone Repository
 git clone <your-repo-url>
 

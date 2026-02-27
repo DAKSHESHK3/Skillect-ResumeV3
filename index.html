@@ -245,25 +245,55 @@ h1 span{color:var(--green)}
   .mode-picker{grid-template-columns:1fr}
 }
 
+/* ── AUTH BUTTON ── */
+.auth-btn{display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--blue),var(--green));color:#000;border:none;border-radius:8px;padding:8px 16px;font-size:10px;font-weight:700;font-family:'Space Mono',monospace;letter-spacing:1px;cursor:pointer;transition:opacity .2s;white-space:nowrap}
+.auth-btn:hover{opacity:.88}
+.auth-btn.outline{background:transparent;border:1px solid var(--border);color:var(--muted)}
+.auth-btn.outline:hover{border-color:var(--blue);color:var(--blue)}
+.auth-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--green));color:#000;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;font-family:'Syne',sans-serif;cursor:pointer;flex-shrink:0}
+.auth-user-wrap{display:flex;align-items:center;gap:8px}
+.auth-email{font-size:10px;color:var(--muted);max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.auth-signout{background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:6px;padding:5px 10px;font-size:9px;font-family:'Space Mono',monospace;cursor:pointer;letter-spacing:1px;transition:all .2s}
+.auth-signout:hover{border-color:var(--red);color:var(--red)}
 /* ── HISTORY BUTTON ── */
-.hist-btn-header{display:flex;align-items:center;gap:7px;background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:8px;padding:7px 14px;font-size:10px;font-family:'Space Mono',monospace;letter-spacing:1px;cursor:pointer;transition:all .2s}
-.hist-btn-header:hover{border-color:var(--blue);color:var(--blue)}
-.hist-badge{background:var(--blue);color:#fff;border-radius:10px;padding:1px 7px;font-size:9px;font-weight:700}
-
+.hist-hdr-btn{display:flex;align-items:center;gap:7px;background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:8px;padding:7px 14px;font-size:10px;font-family:'Space Mono',monospace;letter-spacing:1px;cursor:pointer;transition:all .2s}
+.hist-hdr-btn:hover{border-color:var(--blue);color:var(--blue)}
+.h-badge{background:var(--blue);color:#fff;border-radius:10px;padding:1px 7px;font-size:9px;font-weight:700;min-width:16px;text-align:center}
+/* ── SHARED MODAL BASE ── */
+.m-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);z-index:900;display:none;align-items:center;justify-content:center;padding:20px}
+.m-overlay.open{display:flex}
+/* ── AUTH MODAL ── */
+.am-box{background:var(--panel);border:1px solid var(--border);border-radius:20px;width:100%;max-width:400px;padding:36px 32px;text-align:center;box-shadow:0 28px 90px rgba(0,0,0,.6)}
+.am-logo{font-size:36px;margin-bottom:6px}
+.am-title{font-size:20px;font-weight:900;font-family:'Syne',sans-serif;color:var(--text);margin-bottom:6px}
+.am-sub{font-size:12px;color:var(--muted);margin-bottom:28px;line-height:1.6}
+.am-google-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;background:var(--bg);border:1px solid var(--border);color:var(--text);border-radius:10px;padding:13px;font-size:12px;font-family:'Space Mono',monospace;cursor:pointer;transition:all .2s;margin-bottom:18px}
+.am-google-btn:hover{border-color:var(--blue);background:var(--dim)}
+.am-divider{display:flex;align-items:center;gap:12px;margin-bottom:18px;color:var(--muted);font-size:10px;letter-spacing:2px}
+.am-divider::before,.am-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+.am-input{width:100%;background:var(--input-bg);border:1px solid var(--input-border);color:var(--text);border-radius:10px;padding:12px 14px;font-size:12px;font-family:'Space Mono',monospace;outline:none;transition:border .2s;margin-bottom:10px}
+.am-input:focus{border-color:var(--blue)}
+.am-submit{width:100%;background:linear-gradient(135deg,var(--blue),var(--green));color:#000;border:none;border-radius:10px;padding:13px;font-size:12px;font-weight:700;font-family:'Space Mono',monospace;cursor:pointer;transition:opacity .2s;margin-bottom:14px}
+.am-submit:hover{opacity:.88}
+.am-msg{font-size:12px;min-height:18px;margin-bottom:6px}
+.am-msg.ok{color:var(--green)}
+.am-msg.err{color:var(--red)}
+.am-close-row{margin-top:8px}
+.am-close-link{background:none;border:none;color:var(--muted);font-size:11px;font-family:'Space Mono',monospace;cursor:pointer;letter-spacing:1px;text-decoration:underline;text-underline-offset:3px}
+.am-close-link:hover{color:var(--text)}
 /* ── HISTORY MODAL ── */
-.h-overlay{position:fixed;inset:0;background:rgba(0,0,0,.78);backdrop-filter:blur(7px);z-index:900;display:none;align-items:center;justify-content:center;padding:20px}
-.h-overlay.open{display:flex}
-.h-box{background:var(--panel);border:1px solid var(--border);border-radius:18px;width:100%;max-width:700px;max-height:84vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 28px 90px rgba(0,0,0,.55)}
-.h-head{padding:18px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
-.h-title{font-size:13px;font-weight:700;font-family:'Syne',sans-serif;letter-spacing:1px;color:var(--text)}
-.h-head-r{display:flex;gap:10px;align-items:center}
-.h-clear{background:transparent;border:1px solid #ff5e5e44;color:var(--red);border-radius:6px;padding:5px 12px;font-size:10px;font-family:'Space Mono',monospace;cursor:pointer;letter-spacing:1px;transition:all .2s}
-.h-clear:hover{background:#ff5e5e11;border-color:var(--red)}
-.h-x{background:transparent;border:none;color:var(--muted);cursor:pointer;font-size:22px;line-height:1;padding:0 4px;transition:color .2s}
-.h-x:hover{color:var(--text)}
-.h-body{overflow-y:auto;padding:18px 24px;flex:1}
-.h-empty{text-align:center;color:var(--muted);font-size:13px;padding:48px 20px}
-.h-empty-icon{font-size:40px;margin-bottom:12px}
+.hm-box{background:var(--panel);border:1px solid var(--border);border-radius:18px;width:100%;max-width:720px;max-height:84vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 28px 90px rgba(0,0,0,.55)}
+.hm-head{padding:18px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.hm-title{font-size:13px;font-weight:700;font-family:'Syne',sans-serif;letter-spacing:1px;color:var(--text)}
+.hm-head-r{display:flex;gap:10px;align-items:center}
+.hm-clear{background:transparent;border:1px solid #ff5e5e44;color:var(--red);border-radius:6px;padding:5px 12px;font-size:10px;font-family:'Space Mono',monospace;cursor:pointer;letter-spacing:1px;transition:all .2s}
+.hm-clear:hover{background:#ff5e5e11;border-color:var(--red)}
+.hm-x{background:transparent;border:none;color:var(--muted);cursor:pointer;font-size:22px;line-height:1;padding:0 4px;transition:color .2s}
+.hm-x:hover{color:var(--text)}
+.hm-body{overflow-y:auto;padding:18px 24px;flex:1}
+.hm-cloud-note{background:var(--dim);border:1px solid var(--border);border-radius:10px;padding:10px 16px;font-size:11px;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.hm-empty{text-align:center;color:var(--muted);font-size:13px;padding:48px 20px}
+.hm-empty-icon{font-size:40px;margin-bottom:12px}
 .h-item{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:13px 17px;margin-bottom:10px;display:flex;align-items:center;gap:13px;transition:border-color .2s}
 .h-item:hover{border-color:var(--blue)}
 .h-avatar{width:42px;height:42px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;font-family:'Syne',sans-serif;background:linear-gradient(135deg,var(--blue),var(--green));color:#000}
@@ -280,19 +310,38 @@ h1 span{color:var(--green)}
 .h-act.del:hover{background:#ff5e5e11;border-color:var(--red)}
 </style>
 </head>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <body>
 
+<!-- ── AUTH MODAL ── -->
+<div class="m-overlay" id="authModal">
+  <div class="am-box">
+    <div class="am-logo">🎯</div>
+    <div class="am-title">Welcome to Skillect</div>
+    <div class="am-sub">Sign in to save your analyses to the cloud and access them on any device.</div>
+    <button class="am-google-btn" onclick="authGoogle()">
+      <svg width="18" height="18" viewBox="0 0 18 18"><path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/><path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 009 18z"/><path fill="#FBBC05" d="M3.964 10.71A5.41 5.41 0 013.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 000 9c0 1.452.348 2.827.957 4.042l3.007-2.332z"/><path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 00.957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z"/></svg>
+      CONTINUE WITH GOOGLE
+    </button>
+    <div class="am-divider">OR</div>
+    <input class="am-input" type="email" id="am-email" placeholder="your@email.com" />
+    <button class="am-submit" onclick="authMagicLink()">✉️ SEND MAGIC LINK</button>
+    <div class="am-msg" id="am-msg"></div>
+    <div class="am-close-row"><button class="am-close-link" onclick="authClose()">continue without signing in</button></div>
+  </div>
+</div>
+
 <!-- ── HISTORY MODAL ── -->
-<div class="h-overlay" id="hModal">
-  <div class="h-box">
-    <div class="h-head">
-      <span class="h-title">📂 ANALYSIS HISTORY</span>
-      <div class="h-head-r">
-        <button class="h-clear" onclick="hClearAll()">🗑 CLEAR ALL</button>
-        <button class="h-x" onclick="hClose()">✕</button>
+<div class="m-overlay" id="histModal">
+  <div class="hm-box">
+    <div class="hm-head">
+      <span class="hm-title">📂 ANALYSIS HISTORY</span>
+      <div class="hm-head-r">
+        <button class="hm-clear" onclick="hClearAll()">🗑 CLEAR ALL</button>
+        <button class="hm-x" onclick="hClose()">✕</button>
       </div>
     </div>
-    <div class="h-body" id="hBody"></div>
+    <div class="hm-body" id="hBody"></div>
   </div>
 </div>
 
@@ -303,7 +352,11 @@ h1 span{color:var(--green)}
     <div class="logo-sub">Master Your Skills</div>
   </div>
   <div class="header-right">
-    <button class="hist-btn-header" onclick="hOpen()">📂 HISTORY <span class="hist-badge" id="hCount">0</span></button>
+    <div id="auth-ui">
+      <!-- populated by JS -->
+      <button class="auth-btn" onclick="authOpen()">🔑 SIGN IN</button>
+    </div>
+    <button class="hist-hdr-btn" onclick="hOpen()">📂 HISTORY <span class="h-badge" id="hCount">0</span></button>
     <div class="powered">5 AI MODELS</div>
     <label class="switch" title="Toggle theme">
       <input type="checkbox" id="toggle-input" onchange="toggleTheme(this)">
@@ -691,58 +744,166 @@ let lastAnalysis = null;
 let panelMode = false;
 let selectedTone = 'professional';
 
-// ══════════════════════════════════════════
-// HISTORY  —  localStorage (key: sk-hist)
-// Each entry: { id, name, role, score, date, analysis }
-// ══════════════════════════════════════════
-const H_KEY = 'sk-hist';
-const hLoad = () => { try { return JSON.parse(localStorage.getItem(H_KEY)||'[]'); } catch { return []; } };
-const hSave = arr => { localStorage.setItem(H_KEY, JSON.stringify(arr)); hRefreshCount(); };
-const hRefreshCount = () => { document.getElementById('hCount').textContent = hLoad().length; };
+// ═══════════════════════════════════════════════════════════
+// SUPABASE CONFIG — replace these two values after deploying
+// ═══════════════════════════════════════════════════════════
+const SB_URL  = 'YOUR_SUPABASE_URL';   // e.g. https://abc.supabase.co
+const SB_KEY  = 'YOUR_SUPABASE_ANON_KEY';
+let sbClient = null;
+let sbUser   = null;
 
-function hAddEntry(analysis) {
-  const arr = hLoad();
-  arr.unshift({
-    id: Date.now().toString(),
-    name:  analysis.name || 'Unknown',
-    role:  analysis.currentRole || '',
-    score: analysis.overallScore || 0,
-    date:  new Date().toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'}),
-    analysis
+function initSupabase() {
+  if (SB_URL === 'YOUR_SUPABASE_URL') return; // not configured yet
+  try {
+    sbClient = supabase.createClient(SB_URL, SB_KEY);
+    sbClient.auth.onAuthStateChange((event, session) => {
+      sbUser = session?.user || null;
+      renderAuthUI();
+      hRefreshCount();
+    });
+    sbClient.auth.getSession().then(({ data }) => {
+      sbUser = data?.session?.user || null;
+      renderAuthUI();
+      hRefreshCount();
+    });
+  } catch(e) { console.warn('Supabase init failed:', e); }
+}
+
+// ── AUTH UI ──────────────────────────────────────────────
+function renderAuthUI() {
+  const wrap = document.getElementById('auth-ui');
+  if (!wrap) return;
+  if (sbUser) {
+    const initials = (sbUser.email||'?').slice(0,2).toUpperCase();
+    wrap.innerHTML = `
+      <div class="auth-user-wrap">
+        <div class="auth-avatar" title="${sbUser.email}">${initials}</div>
+        <span class="auth-email">${sbUser.email}</span>
+        <button class="auth-signout" onclick="authSignOut()">SIGN OUT</button>
+      </div>`;
+  } else {
+    wrap.innerHTML = '<button class="auth-btn" onclick="authOpen()">🔑 SIGN IN</button>';
+  }
+}
+
+function authOpen()  { document.getElementById('authModal').classList.add('open'); }
+function authClose() { document.getElementById('authModal').classList.remove('open'); }
+
+function authGoogle() {
+  if (!sbClient) { amMsg('Supabase not configured. Add your keys first.', 'err'); return; }
+  sbClient.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: window.location.href } });
+}
+
+async function authMagicLink() {
+  if (!sbClient) { amMsg('Supabase not configured. Add your keys first.', 'err'); return; }
+  const email = document.getElementById('am-email').value.trim();
+  if (!email || !email.includes('@')) { amMsg('Enter a valid email.', 'err'); return; }
+  amMsg('Sending...', '');
+  const { error } = await sbClient.auth.signInWithOtp({
+    email, options: { emailRedirectTo: window.location.href }
   });
-  if (arr.length > 50) arr.splice(50);
-  hSave(arr);
+  if (error) { amMsg(error.message, 'err'); }
+  else        { amMsg('✅ Magic link sent! Check your email.', 'ok'); }
 }
 
-function hDelete(id) {
-  hSave(hLoad().filter(e => e.id !== id));
-  hRender();
+async function authSignOut() {
+  if (sbClient) await sbClient.auth.signOut();
+  sbUser = null;
+  renderAuthUI();
+  hRefreshCount();
 }
 
-function hClearAll() {
+function amMsg(text, type) {
+  const el = document.getElementById('am-msg');
+  el.textContent = text;
+  el.className = 'am-msg' + (type ? ' ' + type : '');
+}
+
+// ── HISTORY — Supabase only, no localStorage ────────────
+
+async function hRefreshCount() {
+  let count = 0;
+  if (sbClient && sbUser) {
+    const { count: cnt } = await sbClient
+      .from('analyses').select('*', { count: 'exact', head: true });
+    count = cnt ?? 0;
+  }
+  const el = document.getElementById('hCount');
+  if (el) el.textContent = count || '';
+}
+
+async function hSaveEntry(analysis) {
+  if (!sbClient || !sbUser) return; // not logged in — silently skip
+  const { error } = await sbClient.from('analyses').insert({
+    user_id:  sbUser.id,
+    name:     analysis.name || 'Unknown',
+    role:     analysis.currentRole || '',
+    score:    analysis.overallScore || 0,
+    analysis: analysis
+  });
+  if (error) console.warn('History save failed:', error.message);
+  hRefreshCount();
+}
+
+async function hLoadAll() {
+  if (!sbClient || !sbUser) return [];
+  const { data, error } = await sbClient
+    .from('analyses')
+    .select('*')
+    .order('created_at', { ascending: false })
+    .limit(50);
+  if (error || !data) return [];
+  return data.map(r => ({
+    id:       r.id,
+    name:     r.name,
+    role:     r.role || '',
+    score:    r.score,
+    date:     new Date(r.created_at).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+    analysis: r.analysis
+  }));
+}
+
+async function hDelete(id) {
+  if (!sbClient || !sbUser) return;
+  await sbClient.from('analyses').delete().eq('id', id).eq('user_id', sbUser.id);
+  await hRender();
+}
+
+async function hClearAll() {
   if (!confirm('Delete ALL saved analyses? This cannot be undone.')) return;
-  hSave([]);
-  hRender();
+  if (!sbClient || !sbUser) return;
+  await sbClient.from('analyses').delete().eq('user_id', sbUser.id);
+  await hRender();
 }
 
-function hOpen() { hRender(); document.getElementById('hModal').classList.add('open'); }
-function hClose() { document.getElementById('hModal').classList.remove('open'); }
+function hOpen() { hRender(); document.getElementById('histModal').classList.add('open'); }
+function hClose() { document.getElementById('histModal').classList.remove('open'); }
 
-function hRender() {
-  const arr = hLoad();
+async function hRender() {
   const body = document.getElementById('hBody');
-  if (!arr.length) {
-    body.innerHTML = '<div class="h-empty"><div class="h-empty-icon">📭</div>No saved analyses yet.<br>Run an analysis to start building history.</div>';
+  if (!sbClient || !sbUser) {
+    body.innerHTML = `<div class="hm-empty">
+      <div class="hm-empty-icon">🔒</div>
+      Sign in to save and view your analysis history.<br><br>
+      <button class="auth-btn" onclick="hClose();authOpen()">🔑 SIGN IN</button>
+    </div>`;
     return;
   }
-  body.innerHTML = arr.map(e => {
+  body.innerHTML = '<div class="hm-empty"><div class="hm-empty-icon">⏳</div>Loading...</div>';
+  const arr = await hLoadAll();
+  let html = '<div class="hm-cloud-note">☁️ Synced to your account</div>';
+  if (!arr.length) {
+    html += '<div class="hm-empty"><div class="hm-empty-icon">📭</div>No saved analyses yet.<br>Run an analysis to start.</div>';
+    body.innerHTML = html; return;
+  }
+  html += arr.map(e => {
     const c = e.score >= 80 ? 'var(--green)' : e.score >= 60 ? 'var(--yellow)' : 'var(--red)';
-    const initials = (e.name||'?').split(' ').map(w=>w[0]||'').join('').slice(0,2).toUpperCase();
+    const initials = (e.name || '?').split(' ').map(w => w[0] || '').join('').slice(0, 2).toUpperCase();
     return `<div class="h-item">
       <div class="h-avatar">${initials}</div>
       <div class="h-info">
         <div class="h-name">${e.name}</div>
-        <div class="h-meta">${e.role ? e.role+' &nbsp;·&nbsp; ' : ''}${e.date}</div>
+        <div class="h-meta">${e.role ? e.role + ' &nbsp;·&nbsp; ' : ''}${e.date}</div>
       </div>
       <div class="h-score">
         <div class="h-snum" style="color:${c}">${e.score}</div>
@@ -754,20 +915,27 @@ function hRender() {
       </div>
     </div>`;
   }).join('');
+  body.innerHTML = html;
 }
 
 function hView(id) {
-  const entry = hLoad().find(e => e.id === id);
-  if (!entry) return;
-  lastAnalysis = entry.analysis;
-  hClose();
-  renderResults(entry.analysis);
+  hLoadAll().then(arr => {
+    const entry = arr.find(e => e.id === id);
+    if (!entry) return;
+    lastAnalysis = entry.analysis;
+    hClose();
+    renderResults(entry.analysis);
+  });
 }
 
-// Close modal on backdrop click
+// Close modals on backdrop click
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('hModal').addEventListener('click', e => { if (e.target.id === 'hModal') hClose(); });
-  hRefreshCount();
+  ['authModal','histModal'].forEach(id => {
+    document.getElementById(id).addEventListener('click', e => {
+      if (e.target.id === id) document.getElementById(id).classList.remove('open');
+    });
+  });
+  initSupabase();
 });
 
 // THEME
@@ -881,7 +1049,7 @@ async function analyzeResume() {
       analysis = JSON.parse((data.result || '').replace(/```json|```/g, '').trim());
     }
     lastAnalysis = analysis;
-    hAddEntry(analysis);
+    hSaveEntry(analysis);
     renderResults(analysis);
   } catch (err) {
     showError('Analysis failed: ' + err.message);
@@ -1283,7 +1451,7 @@ async function analyzeFromScratch() {
     lastAnalysis._scratchResume = polishedResume;
     lastAnalysis._scratchName = name;
     lastAnalysis._scratchRole = role;
-    hAddEntry(lastAnalysis);
+    hSaveEntry(lastAnalysis);
 
     renderResults(analysis);
 

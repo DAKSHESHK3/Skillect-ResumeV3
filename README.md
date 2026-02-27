@@ -62,6 +62,11 @@ skillect-v3/
 
 ```bash
 
+```bash
+# ===============================
+# V3 INSTALLATION STEPS
+# ===============================
+
 # 1. Clone Repository
 git clone <your-repo-url>
 
@@ -76,65 +81,36 @@ git add index.html api/config.js api/analyze.js
 
 
 # ===============================
-# SUPABASE SETUP
-# ===============================
-
-# 5. Register / Login → Create New Project
-
-# 6. Authentication → URL Config
-# Add Site URL (your deployed Vercel URL)
-
-# 7. Add Redirect URLs
-# https://your-vercel-app.vercel.app
-# http://localhost:3000
-
-# 8. Project Overview → Connect → API Keys
-# Copy:
-#   - Project URL
-#   - Anon Key
-
-# 9. Add to Environment Variables
-
-SUPABASE_ANON_KEY=your_anon_key
-SUPABASE_URL=your_project_url
-
-
-# ===============================
 # GOOGLE AUTH SETUP
 # ===============================
 
-# 10. Supabase → Authentication → Sign In Providers → Enable Google
-
-# 11. Go to Google Cloud Console
+# 5. Go to Google Cloud Console
 # https://console.cloud.google.com
-# Create or Import Project
 
-# 12. APIs & Services → OAuth Consent Screen
+# 6. Create or Import Project
+
+# 7. APIs & Services → OAuth Consent Screen
 # User Type: External
 # Fill:
 #   - App Name
 #   - Support Email
 #   - Developer Email
 
-# 13. Credentials → Create Credentials
+# 8. Credentials → Create Credentials
 # Select: OAuth Client ID
 # Application Type: Web Application
 
-# 14. Authorized Redirect URL
-# https://your-project-ref.supabase.co/auth/v1/callback
+# 9. Add Authorized Redirect URLs
+# https://your-app-domain.com/auth/callback
 
-# 15. Set Redirect URLs
+# 10. Copy Client ID & Secret
+# Add them to your environment variables
 
-# Site URL:
-# https://your-vercel-app.vercel.app
-
-# Redirect URL:
-# https://your-vercel-app.vercel.app/**
 
 # ===============================
 # DONE
 # ===============================
----
+```
 ```
 ## ☁️ Deploying to Vercel
 ```bash

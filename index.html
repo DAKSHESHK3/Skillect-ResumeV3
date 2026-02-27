@@ -263,23 +263,35 @@ h1 span{color:var(--green)}
 .m-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);z-index:900;display:none;align-items:center;justify-content:center;padding:20px}
 .m-overlay.open{display:flex}
 /* ── AUTH MODAL ── */
-.am-box{background:var(--panel);border:1px solid var(--border);border-radius:20px;width:100%;max-width:400px;padding:36px 32px;text-align:center;box-shadow:0 28px 90px rgba(0,0,0,.6)}
-.am-logo{font-size:36px;margin-bottom:6px}
-.am-title{font-size:20px;font-weight:900;font-family:'Syne',sans-serif;color:var(--text);margin-bottom:6px}
-.am-sub{font-size:12px;color:var(--muted);margin-bottom:28px;line-height:1.6}
-.am-google-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;background:var(--bg);border:1px solid var(--border);color:var(--text);border-radius:10px;padding:13px;font-size:12px;font-family:'Space Mono',monospace;cursor:pointer;transition:all .2s;margin-bottom:18px}
+.am-box{background:var(--panel);border:1px solid var(--border);border-radius:20px;width:100%;max-width:420px;padding:32px 30px;text-align:center;box-shadow:0 28px 90px rgba(0,0,0,.6)}
+.am-logo{font-size:34px;margin-bottom:4px}
+.am-title{font-size:20px;font-weight:900;font-family:'Syne',sans-serif;color:var(--text);margin-bottom:4px}
+.am-sub{font-size:11px;color:var(--muted);margin-bottom:22px;line-height:1.6}
+/* Tabs */
+.am-tabs{display:flex;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:3px;margin-bottom:22px;gap:3px}
+.am-tab{flex:1;padding:8px;font-size:11px;font-weight:700;font-family:'Space Mono',monospace;letter-spacing:1px;cursor:pointer;border:none;border-radius:7px;background:transparent;color:var(--muted);transition:all .2s}
+.am-tab.active{background:var(--panel);color:var(--text);box-shadow:0 1px 6px rgba(0,0,0,.3)}
+/* Panel */
+.am-panel{display:none}.am-panel.active{display:block}
+.am-google-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;background:var(--bg);border:1px solid var(--border);color:var(--text);border-radius:10px;padding:13px;font-size:12px;font-family:'Space Mono',monospace;cursor:pointer;transition:all .2s;margin-bottom:16px}
 .am-google-btn:hover{border-color:var(--blue);background:var(--dim)}
-.am-divider{display:flex;align-items:center;gap:12px;margin-bottom:18px;color:var(--muted);font-size:10px;letter-spacing:2px}
+.am-divider{display:flex;align-items:center;gap:12px;margin-bottom:16px;color:var(--muted);font-size:10px;letter-spacing:2px}
 .am-divider::before,.am-divider::after{content:'';flex:1;height:1px;background:var(--border)}
 .am-input{width:100%;background:var(--input-bg);border:1px solid var(--input-border);color:var(--text);border-radius:10px;padding:12px 14px;font-size:12px;font-family:'Space Mono',monospace;outline:none;transition:border .2s;margin-bottom:10px}
 .am-input:focus{border-color:var(--blue)}
-.am-submit{width:100%;background:linear-gradient(135deg,var(--blue),var(--green));color:#000;border:none;border-radius:10px;padding:13px;font-size:12px;font-weight:700;font-family:'Space Mono',monospace;cursor:pointer;transition:opacity .2s;margin-bottom:14px}
+.am-pw-row{position:relative;margin-bottom:10px}
+.am-pw-row .am-input{margin-bottom:0;padding-right:44px}
+.am-pw-toggle{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--muted);cursor:pointer;font-size:14px;padding:4px}
+.am-pw-toggle:hover{color:var(--text)}
+.am-submit{width:100%;background:linear-gradient(135deg,var(--blue),var(--green));color:#000;border:none;border-radius:10px;padding:13px;font-size:12px;font-weight:700;font-family:'Space Mono',monospace;cursor:pointer;transition:opacity .2s;margin-bottom:12px}
 .am-submit:hover{opacity:.88}
-.am-msg{font-size:12px;min-height:18px;margin-bottom:6px}
+.am-submit:disabled{opacity:.5;cursor:not-allowed}
+.am-hint{font-size:10px;color:var(--muted);margin-bottom:10px;line-height:1.5;letter-spacing:.3px}
+.am-msg{font-size:11px;min-height:16px;margin-bottom:8px;line-height:1.5}
 .am-msg.ok{color:var(--green)}
 .am-msg.err{color:var(--red)}
-.am-close-row{margin-top:8px}
-.am-close-link{background:none;border:none;color:var(--muted);font-size:11px;font-family:'Space Mono',monospace;cursor:pointer;letter-spacing:1px;text-decoration:underline;text-underline-offset:3px}
+.am-close-row{margin-top:6px}
+.am-close-link{background:none;border:none;color:var(--muted);font-size:10px;font-family:'Space Mono',monospace;cursor:pointer;letter-spacing:1px;text-decoration:underline;text-underline-offset:3px}
 .am-close-link:hover{color:var(--text)}
 /* ── HISTORY MODAL ── */
 .hm-box{background:var(--panel);border:1px solid var(--border);border-radius:18px;width:100%;max-width:720px;max-height:84vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 28px 90px rgba(0,0,0,.55)}
@@ -317,15 +329,49 @@ h1 span{color:var(--green)}
 <div class="m-overlay" id="authModal">
   <div class="am-box">
     <div class="am-logo">🎯</div>
-    <div class="am-title">Welcome to Skillect</div>
-    <div class="am-sub">Sign in to save your analyses to the cloud and access them on any device.</div>
+    <div class="am-title">Skillect Account</div>
+    <div class="am-sub">Save analyses to the cloud — access from any device.</div>
+
+    <!-- Google (always visible) -->
     <button class="am-google-btn" onclick="authGoogle()">
       <svg width="18" height="18" viewBox="0 0 18 18"><path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/><path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 009 18z"/><path fill="#FBBC05" d="M3.964 10.71A5.41 5.41 0 013.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 000 9c0 1.452.348 2.827.957 4.042l3.007-2.332z"/><path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 00.957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z"/></svg>
       CONTINUE WITH GOOGLE
     </button>
-    <div class="am-divider">OR</div>
-    <input class="am-input" type="email" id="am-email" placeholder="your@email.com" />
-    <button class="am-submit" onclick="authMagicLink()">✉️ SEND MAGIC LINK</button>
+
+    <div class="am-divider">OR USE EMAIL</div>
+
+    <!-- Sign In / Sign Up Tabs -->
+    <div class="am-tabs">
+      <button class="am-tab active" id="tab-signin" onclick="amTab('signin')">SIGN IN</button>
+      <button class="am-tab" id="tab-signup" onclick="amTab('signup')">CREATE ACCOUNT</button>
+    </div>
+
+    <!-- SIGN IN panel -->
+    <div class="am-panel active" id="panel-signin">
+      <input class="am-input" type="email" id="signin-email" placeholder="your@email.com" />
+      <div class="am-pw-row">
+        <input class="am-input" type="password" id="signin-pw" placeholder="password" />
+        <button class="am-pw-toggle" onclick="amTogglePw('signin-pw', this)" tabindex="-1">👁</button>
+      </div>
+      <button class="am-submit" onclick="authSignIn()">SIGN IN →</button>
+      <div class="am-hint">Forgot password? Use <strong>Create Account</strong> with the same email to reset via magic link.</div>
+    </div>
+
+    <!-- SIGN UP panel -->
+    <div class="am-panel" id="panel-signup">
+      <input class="am-input" type="email" id="signup-email" placeholder="your@email.com" />
+      <div class="am-pw-row">
+        <input class="am-input" type="password" id="signup-pw" placeholder="choose a password (min 6 chars)" />
+        <button class="am-pw-toggle" onclick="amTogglePw('signup-pw', this)" tabindex="-1">👁</button>
+      </div>
+      <div class="am-pw-row">
+        <input class="am-input" type="password" id="signup-pw2" placeholder="confirm password" />
+        <button class="am-pw-toggle" onclick="amTogglePw('signup-pw2', this)" tabindex="-1">👁</button>
+      </div>
+      <button class="am-submit" onclick="authSignUp()">CREATE ACCOUNT →</button>
+      <div class="am-hint">You'll receive a confirmation email. Click the link to activate your account.</div>
+    </div>
+
     <div class="am-msg" id="am-msg"></div>
     <div class="am-close-row"><button class="am-close-link" onclick="authClose()">continue without signing in</button></div>
   </div>
@@ -787,24 +833,73 @@ function renderAuthUI() {
   }
 }
 
-function authOpen()  { document.getElementById('authModal').classList.add('open'); }
-function authClose() { document.getElementById('authModal').classList.remove('open'); }
+function authOpen(tab) {
+  document.getElementById('authModal').classList.add('open');
+  if (tab) amTab(tab);
+  amMsg('', '');
+}
+function authClose() {
+  document.getElementById('authModal').classList.remove('open');
+  amMsg('', '');
+}
 
+// ── Tab switching ──
+function amTab(name) {
+  ['signin','signup'].forEach(t => {
+    document.getElementById('tab-' + t).classList.toggle('active', t === name);
+    document.getElementById('panel-' + t).classList.toggle('active', t === name);
+  });
+  amMsg('', '');
+}
+
+// ── Show/hide password ──
+function amTogglePw(inputId, btn) {
+  const el = document.getElementById(inputId);
+  if (el.type === 'password') { el.type = 'text'; btn.textContent = '🙈'; }
+  else                        { el.type = 'password'; btn.textContent = '👁'; }
+}
+
+// ── Google OAuth ──
 function authGoogle() {
-  if (!sbClient) { amMsg('⚠️ Keys not set in Vercel. See instructions below.', 'err'); return; }
+  if (!sbClient) { amMsg('⚠️ Supabase keys not configured in Vercel env vars.', 'err'); return; }
   sbClient.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: window.location.href } });
 }
 
-async function authMagicLink() {
-  if (!sbClient) { amMsg('⚠️ Keys not set in Vercel. See instructions below.', 'err'); return; }
-  const email = document.getElementById('am-email').value.trim();
-  if (!email || !email.includes('@')) { amMsg('Enter a valid email.', 'err'); return; }
-  amMsg('Sending...', '');
-  const { error } = await sbClient.auth.signInWithOtp({
-    email, options: { emailRedirectTo: window.location.href }
+// ── Email + Password Sign In ──
+async function authSignIn() {
+  if (!sbClient) { amMsg('⚠️ Supabase keys not configured in Vercel env vars.', 'err'); return; }
+  const email = document.getElementById('signin-email').value.trim();
+  const pw    = document.getElementById('signin-pw').value;
+  if (!email || !email.includes('@')) { amMsg('Enter a valid email address.', 'err'); return; }
+  if (!pw) { amMsg('Enter your password.', 'err'); return; }
+  const btn = document.querySelector('#panel-signin .am-submit');
+  btn.disabled = true; btn.textContent = 'SIGNING IN…';
+  amMsg('', '');
+  const { error } = await sbClient.auth.signInWithPassword({ email, password: pw });
+  btn.disabled = false; btn.textContent = 'SIGN IN →';
+  if (error) { amMsg('❌ ' + error.message, 'err'); }
+  else        { authClose(); }
+}
+
+// ── Email + Password Sign Up ──
+async function authSignUp() {
+  if (!sbClient) { amMsg('⚠️ Supabase keys not configured in Vercel env vars.', 'err'); return; }
+  const email = document.getElementById('signup-email').value.trim();
+  const pw    = document.getElementById('signup-pw').value;
+  const pw2   = document.getElementById('signup-pw2').value;
+  if (!email || !email.includes('@')) { amMsg('Enter a valid email address.', 'err'); return; }
+  if (pw.length < 6) { amMsg('Password must be at least 6 characters.', 'err'); return; }
+  if (pw !== pw2)    { amMsg('Passwords do not match.', 'err'); return; }
+  const btn = document.querySelector('#panel-signup .am-submit');
+  btn.disabled = true; btn.textContent = 'CREATING…';
+  amMsg('', '');
+  const { error } = await sbClient.auth.signUp({
+    email, password: pw,
+    options: { emailRedirectTo: window.location.href }
   });
-  if (error) { amMsg(error.message, 'err'); }
-  else        { amMsg('✅ Magic link sent! Check your email.', 'ok'); }
+  btn.disabled = false; btn.textContent = 'CREATE ACCOUNT →';
+  if (error) { amMsg('❌ ' + error.message, 'err'); }
+  else        { amMsg('✅ Check your email for a confirmation link!', 'ok'); }
 }
 
 async function authSignOut() {
@@ -816,6 +911,7 @@ async function authSignOut() {
 
 function amMsg(text, type) {
   const el = document.getElementById('am-msg');
+  if (!el) return;
   el.textContent = text;
   el.className = 'am-msg' + (type ? ' ' + type : '');
 }

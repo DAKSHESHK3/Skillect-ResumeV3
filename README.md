@@ -226,77 +226,9 @@ git push origin main
 skillect-v3/
 ├── index.html           ← V3 frontend (split layout + history)
 ├── api/
-│   └── analyze.js       ← Multi-provider AI proxy (unchanged from V2)
+│   └── analyze.js
+    └── config.js      ← Multi-provider AI proxy (unchanged from V2)
 ├── vercel.json          ← Routing config
 └── .gitignore
 ```
 
----
-
-## localStorage Data Format
-
-Stored under key `skillect-history` as a JSON array (max 50 items):
-
-```json
-[
-  {
-    "id": "1719000000000",
-    "name": "Priya Sharma",
-    "role": "Software Engineer",
-    "score": 82,
-    "date": "21 Jun 2025",
-    "analysis": {
-      "name": "Priya Sharma",
-      "currentRole": "Software Engineer",
-      "overallScore": 82,
-      "scoreReason": "...",
-      "strengths": [...],
-      "quickWins": [...],
-      "resumeImprovements": [...],
-      "skillGaps": [...],
-      "learningResources": [...],
-      "opportunities": [...]
-    }
-  }
-]
-```
-
----
-
-## Spotlight Customisation
-
-The spotlight effect uses a CSS variable `--spot-color` (RGB triplet without `rgb()`):
-
-```css
-/* In :root — dark mode */
---spot-color: 59,130,246;   /* blue-500 */
-
-/* In [data-theme="light"] */
---spot-color: 37,99,235;    /* blue-600 */
-```
-
-**To change spotlight colour**, just swap the values:
-```css
-/* Green spotlight */
---spot-color: 0,229,160;
-
-/* Purple spotlight */
---spot-color: 139,92,246;
-
-/* Amber spotlight */
---spot-color: 245,158,11;
-```
-
-The spotlight size is controlled by `.hero-spotlight` width/height (currently 520px).  
-The lerp smoothness is controlled by the `0.12` factor in `animateSpotlight()` — lower = smoother/laggier, higher = snappier.
-
----
-
-## V4 Roadmap
-
-- [ ] Supabase Auth (email magic link + Google OAuth)
-- [ ] Cross-device history sync (DB replaces localStorage)
-- [ ] Edit/rename saved analyses
-- [ ] Notes per analysis
-- [ ] Share analysis via link
-- [ ] Team workspace (multiple users, shared history)

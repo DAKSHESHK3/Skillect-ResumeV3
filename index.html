@@ -745,27 +745,28 @@ let panelMode = false;
 let selectedTone = 'professional';
 
 // ═══════════════════════════════════════════════════════════
-// SUPABASE CONFIG — replace these two values after deploying
+// SUPABASE CONFIG — loaded securely from /api/config
+// Keys live in Vercel environment variables, never in this file
 // ═══════════════════════════════════════════════════════════
-const SB_URL  = 'YOUR_SUPABASE_URL';   // e.g. https://abc.supabase.co
-const SB_KEY  = 'YOUR_SUPABASE_ANON_KEY';
 let sbClient = null;
 let sbUser   = null;
 
-function initSupabase() {
-  if (SB_URL === 'YOUR_SUPABASE_URL') return; // not configured yet
+async function initSupabase() {
   try {
-    sbClient = supabase.createClient(SB_URL, SB_KEY);
+    const res = await fetch('/api/config');
+    if (!res.ok) { console.warn('Config endpoint not available'); return; }
+    const { url, anonKey } = await res.json();
+    if (!url || !anonKey) { console.warn('Supabase keys not set in Vercel env vars'); return; }
+    sbClient = supabase.createClient(url, anonKey);
     sbClient.auth.onAuthStateChange((event, session) => {
       sbUser = session?.user || null;
       renderAuthUI();
       hRefreshCount();
     });
-    sbClient.auth.getSession().then(({ data }) => {
-      sbUser = data?.session?.user || null;
-      renderAuthUI();
-      hRefreshCount();
-    });
+    const { data } = await sbClient.auth.getSession();
+    sbUser = data?.session?.user || null;
+    renderAuthUI();
+    hRefreshCount();
   } catch(e) { console.warn('Supabase init failed:', e); }
 }
 
@@ -790,12 +791,12 @@ function authOpen()  { document.getElementById('authModal').classList.add('open'
 function authClose() { document.getElementById('authModal').classList.remove('open'); }
 
 function authGoogle() {
-  if (!sbClient) { amMsg('Supabase not configured. Add your keys first.', 'err'); return; }
+  if (!sbClient) { amMsg('⚠️ Keys not set in Vercel. See instructions below.', 'err'); return; }
   sbClient.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: window.location.href } });
 }
 
 async function authMagicLink() {
-  if (!sbClient) { amMsg('Supabase not configured. Add your keys first.', 'err'); return; }
+  if (!sbClient) { amMsg('⚠️ Keys not set in Vercel. See instructions below.', 'err'); return; }
   const email = document.getElementById('am-email').value.trim();
   if (!email || !email.includes('@')) { amMsg('Enter a valid email.', 'err'); return; }
   amMsg('Sending...', '');

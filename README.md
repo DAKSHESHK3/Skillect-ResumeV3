@@ -58,71 +58,129 @@ skillect-v3/
 
 ## 🚀 Git Setup & Deployment
 
-### Option A — Fresh Repo
+### Installation steps:
 
 ```bash
 
-```
+# 1. Clone Repository
+git clone <your-repo-url>
 
-### Option B — Tag V3 on Existing Repo
+# 2. Navigate to Project Folder
+cd "Project_Name"
 
-```bash
-cd your-existing-skillect-repo
-git checkout main && git pull
+# 3. Initialize Git (if required)
+git init
 
-# Replace index.html with the new V3 file, keep analyze.js as-is
+# 4. Add Required Files
+git add index.html api/config.js api/analyze.js
+
+
+# ===============================
+# VERCEL DEPLOYMENT
+# ===============================
+
+# 5. Import project to Vercel
+# Go to Vercel Dashboard
+# Click "New Project"
+# Import Git Repository
+
+# 6. Add API Keys in Environment Variables
+# Project Settings → Environment Variables
+# Add required API keys
+
+# 7. Redeploy project
+
+
+# ===============================
+# SUPABASE SETUP
+# ===============================
+
+# 8. Register / Login → Create New Project
+
+# 9. Authentication → URL Config
+# Add Site URL (your deployed Vercel URL)
+
+# 10. Add Redirect URLs
+# https://your-vercel-app.vercel.app
+# http://localhost:3000
+
+# 11. Project Overview → Connect → API Keys
+# Copy:
+#   - Project URL
+#   - Anon Key
+
+# 12. Add to Vercel Environment Variables
+
+SUPABASE_ANON_KEY=your_anon_key
+SUPABASE_URL=your_project_url
+
+
+# ===============================
+# GOOGLE AUTH SETUP
+# ===============================
+
+# 13. Supabase → Authentication → Sign In Providers → Enable Google
+
+# 14. Go to Google Cloud Console
+# https://console.cloud.google.com
+# Create or Import Project
+
+
+# ===============================
+# GOOGLE OAUTH CONFIGURATION
+# ===============================
+
+# 15. Left Sidebar → APIs & Services → OAuth Consent Screen
+
+# 16. Create Project
+# User Type: External
+# Fill:
+#   - App Name
+#   - Support Email
+#   - Developer Email
+# Save
+
+# 17. Left Sidebar → Credentials → Create Credentials
+# Select: OAuth Client ID
+# Application Type: Web Application
+# Add Client Name
+
+# 18. Authorized Redirect URLs
+# Click Add URL
+# Paste Callback URL (from Supabase panel):
+# https://your-project-ref.supabase.co/auth/v1/callback
+
+# 19. Set Redirect URLs
+
+# Site URL:
+# https://your-vercel-app.vercel.app
+
+# Redirect URL:
+# https://your-vercel-app.vercel.app/**
+
+
+# ===============================
+# FINAL STEP
+# ===============================
+
+# 20. Push to GitHub or Redeploy
 
 git add .
-git commit -m "feat(v3): split-layout hero, mouse spotlight, history panel
+git commit -m "Final deployment setup"
+git push
 
-BREAKING CHANGES:
-- New page structure: 48/52 split layout (hero | tool)
-- Logo icon changed from 68px transparent to 38px gradient square
 
-NEW FEATURES:
-- Hero left panel with reactive mouse spotlight (radial light bloom)
-- Spotlight uses CSS --spot-color var, theme-aware (dark=blue, light=deeper blue)
-- Geometric dot-grid and blur orb background on hero panel
-- Analysis history auto-saved to localStorage after every analysis
-- History modal: view, reload, delete individual analyses, or clear all
-- History count badge in header (live count)
-- All V2 features fully preserved
+# ===============================
+# 21. congratulation 🎉
+# ===============================
 
-INTERNALS:
-- Spotlight uses requestAnimationFrame with 0.12 lerp factor for smoothness
-- History schema: { id, name, role, score, date, analysis }
-- Max 50 history entries (auto-pruned oldest)
-- localStorage key: skillect-history"
-
-# Tag the release
-git tag -a v3.0.0 -m "V3.0.0 — Split layout, spotlight, history"
-git push origin main
-git push origin v3.0.0
-```
+# Working Skillect App is Live 🚀
+# Open your deployed Vercel URL
 
 ---
 
 ## ☁️ Deploying to Vercel
 
-```bash
-# Install Vercel CLI
-npm i -g vercel
-
-# Deploy from project root
-vercel
-```
-
-Add `vercel.json` to the project root if not already present:
-
-```json
-{
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/$1" }
-  ]
-}
-```
-
-> Vercel auto-deploys on every push to `main`. To trigger a manual production deploy: `vercel --prod`
 
 ### 🔑 Environment Variables
 
@@ -136,6 +194,8 @@ Configure in **Vercel Dashboard → Your Project → Settings → Environment Va
 | `COHERE_API_KEY` | ⬜ Optional |
 | `OPENROUTER_API_KEY` | ⬜ Optional |
 | `TOGETHER_API_KEY` | ⬜ Optional |
+| `SUPABASE_URL` | ✅ Required |
+| `SUPABASE_ANON_KEY` | ✅ Required |
 
 ---
 

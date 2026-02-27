@@ -61,31 +61,7 @@ skillect-v3/
 ### Option A — Fresh Repo
 
 ```bash
-# 1. Create & initialise project
-mkdir skillect-v3 && cd skillect-v3
-git init
 
-# 2. Add a .gitignore
-cat > .gitignore << 'EOF'
-node_modules/
-.env
-.env.local
-.vercel/
-.DS_Store
-*.log
-EOF
-
-# 3. Stage and commit
-git add .
-git commit -m "feat: initial V3 — split layout, spotlight, history persistence"
-
-# 4. Create repo at github.com/new
-#    ⚠️  Leave "Add README" and "Add .gitignore" UNTICKED
-
-# 5. Link remote and push
-git remote add origin https://github.com/YOUR_USERNAME/skillect-v3.git
-git branch -M main
-git push -u origin main
 ```
 
 ### Option B — Tag V3 on Existing Repo
